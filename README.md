@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+set up a react app 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Then in our app.js -> we firstly imported useState hook  and react from react - i.e ->import React, { useState } from 'react';
 
-## Available Scripts
+Then we made the use of this hook to show an onClick functionality of the user number of clicks 
+for it ----> we 1stly set the initial value of the clicks as 0 by passing a setClick function to the hook ->
+ i.e-> const [click, setClick] = useState(0);
 
-In the project directory, you can run:
+ This is to be done inside the app function and above the return statement 
 
-### `npm start`
+ After that in the return statement we added a paragraph text that "you clicked "And passed in {click} to it so that it can show the 
+ current value of clicks which was initially set to 0 but will update by -> the set click method 
+ i.e->      <p>You clicked {click} times</p>
+  
+            <button onClick={() => setClick(click + 1)}>
+                Click me
+            </button> 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+     HERE WE HAVE A BUTTON WITH AN onClick EVENTLISTENER THAT TRIGGERS THE setClick METHOD WHICH IN TURN ADDS 1 TO THE ORIGNAL VALUE 
+     OF CLICK AND UPDATES IT AS A NEW VALUE 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+     ------HENCE THE TOTAL NUMBER OF CLICKS START GETTING TO APPEAR IN THE VALUES PART
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+============================***********************************===================================**********************************
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+NOW  to show a more complicated option we make use of this hook in one of the other component -> color and then render it here after 
+importing to the app.js so it shows the useState demo more properly 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1)import useState and react in the component -> import React, { useState } from 'react';
 
-### `npm run eject`
+2) inside the color function apply the useState hook and set its initial value as white ->  i.e
+const [backgroundColor, setBackgroundColor] = useState('white');
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3) After setting the initial value as white we now define the toggleColor function to change the value of the div when clicked on a BUTTON
+i.e-->
+const toggleColor = () => {
+    // If the background color is currently red, set it to white; otherwise, set it to red
+    setBackgroundColor(backgroundColor === 'red' ? 'white' : 'red');
+  };
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4) Now inside the return statement we create a div -> pass in the background color we set before to it set the div's height & width 
 
-## Learn More
+then after inside this div we create a button named change color which triggers the toggleColor function as of the onClick EVENTLISTENER
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+i.e->  <div style={{ backgroundColor, width: '100vw', height: '100vh' }}>
+            <button onClick={toggleColor}>Change Color</button>
+       </div>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Now when run the app will also have a button that will turn the div of backgroundColor white and of height and width to -> red/white 
+when the button is pressed and the toggleColor function ultimately gets triggered
